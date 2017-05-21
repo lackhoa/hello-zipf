@@ -45,7 +45,9 @@ for _ in range(1000000):
 	# then add the molecule correspond to it
 	molecules.append([new_atom])
 
+counter = 0
 while True:
+	counter+=1
 	# ALGORHYTHM
 	# Then choose randomly two different atoms (skip if there's only one:
 	if len(atoms) == 1:
@@ -74,3 +76,12 @@ while True:
 
 	# PRINTING!
 	print_chart()
+
+	# Writing result out every x times
+	if counter == 100:
+		with open('output/detail.txt' ,'w') as file:
+			for mol in molecules[0:20]:
+				file.write(str(len(mol)) + '\n')
+				file.write(str(mol) + '\n')
+		file.close()
+		counter = 0
